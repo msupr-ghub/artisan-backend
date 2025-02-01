@@ -1,8 +1,9 @@
 import uuid
+from typing import Annotated
 
 from fastapi import APIRouter, Depends
 
-from app.dependencies import get_rag_service, get_chat_repository, get_message_repository
+from app.dependencies import get_rag_service, get_chat_repository, get_message_repository, oauth2_scheme
 from app.models.chat import Message, Chat
 from app.repositories.chat_repository import ChatRepository
 from app.repositories.message_repository import MessageRepository
@@ -13,14 +14,15 @@ router = APIRouter()
 
 
 @router.post("/", response_model=ChatCreateResponse)
-async def new_chat(chat_repository: ChatRepository = Depends(get_chat_repository)):
+async def new_chat(token: Annotated[str, Depends(oauth2_scheme)], chat_repository: ChatRepository = Depends(get_chat_repository)):
     chat = Chat(user_id='123e4567-e89b-12d3-a456-426614174000')
     await chat_repository.create_chat(chat)
     return ChatCreateResponse(id=chat.id)
 
 
 @router.post("/{chat_id}", response_model=MessageResponse)
-async def new_message(chat_id: uuid.UUID, message: MessageRequest,
+async def new_message(token: Annotated[str, Depends(oauth2_scheme)],
+                      chat_id: uuid.UUID, message: MessageRequest,
                       rag_service: RAGService = Depends(get_rag_service),
                       message_repository: MessageRepository = Depends(get_message_repository)):
     context = await rag_service.query_knowledge_base(message.content)

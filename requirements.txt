@@ -8,3 +8,5 @@ langchain
 langchain-openai
 python-multipart
 markitdown
+pyjwt
+passlib[bcrypt]

@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from pydantic import BaseModel
 
 from app.models.user import User
@@ -15,16 +17,18 @@ class UserCreate(BaseModel):
         return user
 
 class UserResponse(BaseModel):
-    id: int
-    name: str
+    id: UUID
+    username: str
     email: str
     is_active: bool
     is_superuser: bool
 
-    def from_user(self, user: User):
-        self.id = user.id
-        self.name = user.name
-        self.email = user.email
-        self.is_active = user.is_active
-        self.is_superuser = user.is_superuser
-        return self
+    @staticmethod
+    def from_user(user: User):
+        return UserResponse(
+            id=user.id,
+            username=user.username,
+            email=user.email,
+            is_active=user.is_active,
+            is_superuser=user.is_superuser,
+        )
