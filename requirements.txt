@@ -1,1 +1,9 @@
 fastapi[standard]
+sqlmodel
+alembic
+python-dotenv
+psycopg2-binary
+chromadb
+langchain
+langchain-openai
+python-multipart

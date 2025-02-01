@@ -1,0 +1,1 @@
+chroma_client = chromadb.Client()
