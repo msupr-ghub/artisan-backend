@@ -9,7 +9,7 @@ from typing import Sequence, Union
 
 from alembic import op
 import sqlalchemy as sa
-
+from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
 revision: str = '67ab74fb7e4e'
@@ -21,7 +21,7 @@ depends_on: Union[str, Sequence[str], None] = None
 def upgrade() -> None:
     op.create_table(
         "user",
-        sa.Column("id", sa.String, primary_key=True, index=True, nullable=False),
+        sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True, index=True, nullable=False),
         sa.Column("username", sa.String, nullable=False),
         sa.Column("email", sa.String, nullable=False),
         sa.Column("hashed_password", sa.String, nullable=False),
@@ -33,14 +33,17 @@ def upgrade() -> None:
     op.create_index("ix_user_email", "user", ["email"], unique=True)
     op.create_table(
         "chat",
-        sa.Column("id", sa.String, primary_key=True, index=True, nullable=False),
+        sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True, index=True, nullable=False),
+        sa.Column("user_id", postgresql.UUID(as_uuid=True), nullable=False),
     )
+    op.create_foreign_key("fk_chat_user_id", "chat", "user", ["user_id"], ["id"])
 
     op.create_table(
         "message",
-        sa.Column("id", sa.String, primary_key=True, index=True, nullable=False),
-        sa.Column("chat_id", sa.String, nullable=False),
-        sa.Column("user_id", sa.String, nullable=False),
+        sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True, index=True, nullable=False),
+        sa.Column("chat_id", postgresql.UUID(as_uuid=True), nullable=False),
+        sa.Column("user_id", postgresql.UUID(as_uuid=True), nullable=False),
+        sa.Column("content", sa.String, nullable=True),
     )
 
     op.create_index("ix_message_chat_id", "message", ["chat_id"])

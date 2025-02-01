@@ -10,6 +10,7 @@ class Chat(SQLModel, table=True):
         primary_key=True,
         index=True,
         nullable=False)
+    user_id: uuid.UUID = Field(foreign_key="user.id", nullable=False)
 
 
 class Message(SQLModel, table=True):
@@ -19,5 +20,6 @@ class Message(SQLModel, table=True):
         index=True,
         nullable=False)
 
-    chat_id: uuid.UUID = Field(foreign_key="Chat.id", nullable=False)
-    user_id: uuid.UUID = Field(foreign_key="User.id", nullable=False)
+    chat_id: uuid.UUID = Field(foreign_key="chat.id", nullable=False)
+    user_id: uuid.UUID = Field(foreign_key="user.id", nullable=False)
+    content: str

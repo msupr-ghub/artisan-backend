@@ -4,19 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="Initial DB setup / Alembic configuration">
-      <change afterPath="$PROJECT_DIR$/app/dependencies.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/repositories/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/repositories/chat_repository.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/chat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="RAG initial setup with Chroma DB as vector DB">
+      <change afterPath="$PROJECT_DIR$/app/repositories/message_repository.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/repositories/user_repository.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alembic.ini" beforeDir="false" afterPath="$PROJECT_DIR$/alembic.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alembic/versions/2025-02-01_bootstrap_tables.py" beforeDir="false" afterPath="$PROJECT_DIR$/alembic/versions/2025-02-01_bootstrap_tables.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/api/chat/chat.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/chat/chat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/db/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/db/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dependencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/dependencies.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/chat.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/chat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/rag_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/rag_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories/chat_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/chat_repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/chat.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/chat.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,12 +104,21 @@
       <option name="project" value="LOCAL" />
       <updated>1738410389468</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="RAG initial setup with Chroma DB as vector DB">
+      <option name="closed" value="true" />
+      <created>1738420485341</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738420485341</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial DB setup / Alembic configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial DB setup / Alembic configuration" />
+    <MESSAGE value="RAG initial setup with Chroma DB as vector DB" />
+    <option name="LAST_COMMIT_MESSAGE" value="RAG initial setup with Chroma DB as vector DB" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
