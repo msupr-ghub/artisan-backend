@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="Handle last message deletion and last message update that results in new response">
-      <change afterPath="$PROJECT_DIR$/app/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/.env.dev" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/config_vars.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/tests/api_tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="Setup tests with SQL lite DB , enable environment specific configuration , and SQL lite config for tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alembic.ini" beforeDir="false" afterPath="$PROJECT_DIR$/alembic.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/auth/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/db/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/db/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/security/security_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/security/security_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.env" beforeDir="false" afterPath="$PROJECT_DIR$/app/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/app/.env.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/chat/chat.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/chat/chat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tests/api_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tests/api_tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +59,7 @@
       <recent name="$PROJECT_DIR$/app/api/user" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for api_tests.test_user_registration">
+  <component name="RunManager" selected="Python tests.Python tests for api_tests.test_send_message">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -87,6 +81,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for api_tests.test_create_chat" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;api_tests.test_create_chat&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests for api_tests.test_health_check" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -98,6 +106,34 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;api_tests.test_health_check&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for api_tests.test_send_message" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;api_tests.test_send_message&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for api_tests.test_user_login" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;api_tests.test_user_login&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -117,6 +153,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for api_tests.test_send_message" />
+        <item itemvalue="Python tests.Python tests for api_tests.test_create_chat" />
+        <item itemvalue="Python tests.Python tests for api_tests.test_user_login" />
         <item itemvalue="Python tests.Python tests for api_tests.test_user_registration" />
         <item itemvalue="Python tests.Python tests for api_tests.test_health_check" />
       </list>
@@ -171,8 +210,27 @@
       <option name="project" value="LOCAL" />
       <updated>1738476853557</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Setup tests with SQL lite DB , enable environment specific configuration , and SQL lite config for tests">
+      <option name="closed" value="true" />
+      <created>1738482033052</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738482033052</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial DB setup / Alembic configuration" />
@@ -180,7 +238,8 @@
     <MESSAGE value="working APIs with DB storage" />
     <MESSAGE value="Setup Authentication" />
     <MESSAGE value="Handle last message deletion and last message update that results in new response" />
-    <option name="LAST_COMMIT_MESSAGE" value="Handle last message deletion and last message update that results in new response" />
+    <MESSAGE value="Setup tests with SQL lite DB , enable environment specific configuration , and SQL lite config for tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setup tests with SQL lite DB , enable environment specific configuration , and SQL lite config for tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
