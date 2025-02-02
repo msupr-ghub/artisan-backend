@@ -4,16 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="Setup Authentication">
-      <change afterPath="$PROJECT_DIR$/app/models/mixins.py" afterDir="false" />
+    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="Handle last message deletion and last message update that results in new response">
+      <change afterPath="$PROJECT_DIR$/app/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/.env.dev" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/config_vars.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/tests/api_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alembic/versions/2025-02-01_bootstrap_tables.py" beforeDir="false" afterPath="$PROJECT_DIR$/alembic/versions/2025-02-01_bootstrap_tables.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/chat/chat.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/chat/chat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/user/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/user/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/chat.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/chat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/repositories/message_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/message_repository.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alembic.ini" beforeDir="false" afterPath="$PROJECT_DIR$/alembic.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/auth/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/db/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/db/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/security/security_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/security/security_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,11 +61,11 @@
       <recent name="$PROJECT_DIR$/app/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/api/user" />
       <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/api/user" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python tests.Python tests for api_tests.test_user_registration">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,6 +87,40 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for api_tests.test_health_check" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;api_tests.test_health_check&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for api_tests.test_user_registration" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;api_tests.test_user_registration&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests for api_tests.test_user_registration" />
+        <item itemvalue="Python tests.Python tests for api_tests.test_health_check" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -127,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738429602900</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Handle last message deletion and last message update that results in new response">
+      <option name="closed" value="true" />
+      <created>1738476853557</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738476853557</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -135,7 +179,8 @@
     <MESSAGE value="RAG initial setup with Chroma DB as vector DB" />
     <MESSAGE value="working APIs with DB storage" />
     <MESSAGE value="Setup Authentication" />
-    <option name="LAST_COMMIT_MESSAGE" value="Setup Authentication" />
+    <MESSAGE value="Handle last message deletion and last message update that results in new response" />
+    <option name="LAST_COMMIT_MESSAGE" value="Handle last message deletion and last message update that results in new response" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -144,6 +189,26 @@
           <url>file://$PROJECT_DIR$/.venv/lib/python3.12/site-packages/chromadb/api/models/Collection.py</url>
           <line>81</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/.venv/lib/python3.12/site-packages/dotenv/main.py</url>
+          <line>344</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/.venv/lib/python3.12/site-packages/dotenv/main.py</url>
+          <line>91</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/.venv/lib/python3.12/site-packages/dotenv/main.py</url>
+          <line>82</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/.venv/lib/python3.12/site-packages/dotenv/main.py</url>
+          <line>72</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

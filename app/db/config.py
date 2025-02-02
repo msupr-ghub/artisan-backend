@@ -2,7 +2,8 @@ from contextlib import contextmanager
 
 from sqlmodel import SQLModel, Session, create_engine
 
-DATABASE_URL = "postgresql://:@localhost:5432/artisan"
+from app.config_vars import DATABASE_URL
+
 engine = create_engine(DATABASE_URL, echo=True)
 
 @contextmanager

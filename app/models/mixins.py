@@ -1,6 +1,8 @@
 from datetime import datetime
 
 import sqlalchemy as sa
+from sqlalchemy import func
+
 
 class TimestampsMixin:
     """
@@ -12,7 +14,7 @@ class TimestampsMixin:
     created_at = sa.Column(
         "created_at",
         sa.TIMESTAMP(timezone=False),
-        server_default=sa.text("now()"),
+        server_default=func.now(),
         default=datetime.utcnow,
         nullable=False,
     )
@@ -20,7 +22,7 @@ class TimestampsMixin:
     updated_at = sa.Column(
         "updated_at",
         sa.TIMESTAMP(timezone=False),
-        server_default=sa.text("now()"),
+        server_default=func.now(),
         default=datetime.utcnow,
         onupdate=datetime.utcnow,
         nullable=False,

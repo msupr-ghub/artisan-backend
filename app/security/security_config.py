@@ -8,14 +8,11 @@ from jwt import InvalidTokenError
 from passlib.context import CryptContext
 from starlette import status
 
+from app.config_vars import SECRET_KEY, ALGORITHM
 from app.dependencies import oauth2_scheme, get_user_repository
 from app.models.user import User
 from app.repositories.user_repository import UserRepository
 from app.schemas.auth import TokenData
-
-SECRET_KEY=os.getenv("SECRET_KEY")
-ALGORITHM=os.getenv("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES=int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
