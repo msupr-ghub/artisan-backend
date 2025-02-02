@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="simplify tests, we don't need session override as we have added .env file support for tests so tests can use their own configuration and connect with SQLite">
+    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="Add more knowledgebase data from artisan help center">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <list id="0b80b6ae-0b1a-4842-ad3c-824a89458d0d" name="env" comment="env">
       <change beforePath="$PROJECT_DIR$/app/.env" beforeDir="false" afterPath="$PROJECT_DIR$/app/.env" afterDir="false" />
@@ -43,7 +46,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/msingh/work/artisan/backend/app/knowledgebase",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -239,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738492699049</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add more knowledgebase data from artisan help center">
+      <option name="closed" value="true" />
+      <created>1738493323745</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1738493323745</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -266,7 +277,8 @@
     <MESSAGE value="Override alembic configuration, we can read DB URL from env file, add email validation for usercreate schema while registering a user &#10;&#10;Add a system user in the migration, used to keep track of system response messages&#10;&#10;update read me with instructions" />
     <MESSAGE value="actual Knowledge base integration with sample file from artisan help center" />
     <MESSAGE value="simplify tests, we don't need session override as we have added .env file support for tests so tests can use their own configuration and connect with SQLite" />
-    <option name="LAST_COMMIT_MESSAGE" value="simplify tests, we don't need session override as we have added .env file support for tests so tests can use their own configuration and connect with SQLite" />
+    <MESSAGE value="Add more knowledgebase data from artisan help center" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add more knowledgebase data from artisan help center" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
