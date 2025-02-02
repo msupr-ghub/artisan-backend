@@ -1,3 +1,4 @@
+import logging
 import uuid
 from typing import Annotated
 
@@ -13,7 +14,7 @@ from app.security.security_config import get_current_user
 from app.services.rag_service import RAGService
 
 router = APIRouter()
-
+logger = logging.getLogger(__name__)
 
 @router.post("/", response_model=ChatCreateResponse)
 async def new_chat(chat_repository: ChatRepository = Depends(get_chat_repository), user: User = Depends(get_current_user)):
@@ -54,6 +55,7 @@ async def update_last_user_message(chat_id: uuid.UUID,
 
 async def __generate_response(chat_id, message, message_repository, rag_service, user) -> Message:
     context = await rag_service.query_knowledge_base(message.content)
+    logger.info(f"Context: {context}")
     response_content = await rag_service.generate_response(message.content, context)
     user_message = Message(chat_id=chat_id, user_id=user.id, content=message.content, type=MessageType.USER)
     system_message = Message(chat_id=chat_id, user_id=uuid.UUID("123e4567-e89b-12d3-a456-426614174001"), content=response_content, type=MessageType.SYSTEM)

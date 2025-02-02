@@ -28,21 +28,27 @@ class RAGService:
             length_function=len
         )
 
-    async def process_document(self, content: str, metadata: Optional[dict] = None) -> List[str]:
+    async def process_document(self, content: str, metadata: Optional[dict] = None) :
         """Split document into chunks and return them"""
         texts = self.text_splitter.split_text(content)
-        return texts
+        await self.add_texts_to_collection(texts, metadata)
+
+    async def process_file(self, path: str) -> None:
+        """Read document from file and convert to markdown, make chunks and return"""
+
+        content = self.md.convert_local(path).text_content
+        await self.process_document(content)
+        return
 
     async def add_texts_to_collection(self, texts: List[str], metadata: Optional[dict] = None):
         """Add text chunks to ChromaDB collection"""
-        # Generate IDs for each chunk
+
         ids = [f"doc_{i}" for i in range(len(texts))]
 
-        # Add documents to collection
         self.collection.add(
             documents=texts,
             ids=ids,
-            metadatas=[metadata or {}] * len(texts)
+            metadatas=[metadata or {}] * len(texts) if metadata else None
         )
 
     async def query_knowledge_base(self, query: str, n_results: int = 3) -> List[str]:
