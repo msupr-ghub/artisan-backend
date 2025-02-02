@@ -1,11 +1,10 @@
 # Create FastAPI instance
-from dotenv import load_dotenv
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-from app.router import api_router
-from app.api.auth.auth import router as auth_router
 
-load_dotenv()
+from app.api.auth.auth import router as auth_router
+from app.router import api_router
+
 app = FastAPI(
     title="Artisan chat bot",
     description="Artisan chat bot",

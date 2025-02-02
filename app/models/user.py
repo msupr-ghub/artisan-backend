@@ -1,6 +1,7 @@
 import uuid
 from typing import Optional
 
+from pydantic import EmailStr
 from sqlmodel import SQLModel, Field
 
 from app.models.mixins import TimestampsMixin

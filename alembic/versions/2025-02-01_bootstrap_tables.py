@@ -58,6 +58,14 @@ def upgrade() -> None:
     op.create_foreign_key("fk_message_chat_id", "message", "chat", ["chat_id"], ["id"])
     op.create_foreign_key("fk_message_user_id", "message", "user", ["user_id"], ["id"])
 
+    # insert a system user in users table, this user is used to track system messages
+    op.execute(
+        """
+        INSERT INTO "user" (id, username, email, hashed_password, is_active, is_superuser)
+        VALUES ('123e4567-e89b-12d3-a456-426614174001', 'system', 'system@artisan.ai', 'system', true, false)
+        """
+    )
+
 
 
 def downgrade() -> None:

@@ -2,14 +2,14 @@ from uuid import UUID
 
 from bcrypt import hashpw, gensalt
 from passlib.handlers.bcrypt import bcrypt
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 
 from app.models.user import User
 
 
 class UserCreate(BaseModel):
     username: str
-    email: str
+    email: EmailStr
     password: str
 
     def to_user(self) -> User:
