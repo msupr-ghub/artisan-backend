@@ -22,6 +22,9 @@ class UserRepository:
     def get_by_email(self, email: str):
         return self.db.query(User).filter(User.email == email).first()
 
+    def get_system_user(self):
+        return self.db.query(User).filter(User.username == 'system').first()
+
     def get_all(self):
         return self.db.query(User).all()
 

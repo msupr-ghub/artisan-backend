@@ -1,20 +1,21 @@
 import uuid
-from pathlib import Path
 
-from fastapi import Depends
-from sqlmodel import SQLModel, Session
+from sqlmodel import SQLModel
 from starlette.testclient import TestClient
 
-from app.db.config import get_session, engine
+from app.db.config import engine
 from app.dependencies import get_user_repository
 from app.main import app
 from app.models.user import User
-from app.repositories.user_repository import UserRepository
 
 client = TestClient(app)
 
 
 def setup_module():
+
+    # drop any existing db
+    SQLModel.metadata.drop_all(engine)
+
     # setup DB tables before running tests
     SQLModel.metadata.create_all(engine)
 
@@ -29,13 +30,14 @@ def setup_module():
     user.is_superuser = False
     user_repository.create(user)
 
-    # create a use for test authentication
+    # create a user for test authentication
     user = User()
     user.username = "test_user"
     user.email = "test@test.com"
-    user.hashed_password = "$2a$12$1U9FB.GE5cbKYnX5mUCvDeWfRP6WFV8r3LPp1yF625klYQrS51EMC"
+    user.hashed_password = "$2a$12$y6VrUyyFcjjOK2c5ef63V.dbZc9xRjr7VROC8owxyGbrH.1UDYVOm"
     user.is_active = True
     user.is_superuser = False
+    user_repository.create(user)
 
 
 

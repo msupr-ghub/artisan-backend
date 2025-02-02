@@ -4,11 +4,13 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends
 
-from app.dependencies import get_rag_service, get_chat_repository, get_message_repository, oauth2_scheme
+from app.dependencies import get_rag_service, get_chat_repository, get_message_repository, oauth2_scheme, \
+    get_user_repository
 from app.models.chat import Message, Chat, MessageType
 from app.models.user import User
 from app.repositories.chat_repository import ChatRepository
 from app.repositories.message_repository import MessageRepository
+from app.repositories.user_repository import UserRepository
 from app.schemas.chat import MessageRequest, MessageResponse, ChatCreateResponse
 from app.security.security_config import get_current_user
 from app.services.rag_service import RAGService
@@ -28,8 +30,10 @@ async def new_message(
                       chat_id: uuid.UUID, message: MessageRequest,
                       rag_service: RAGService = Depends(get_rag_service),
                       message_repository: MessageRepository = Depends(get_message_repository),
+                      user_repository: UserRepository = Depends(get_user_repository),
                       user: User = Depends(get_current_user)):
-    response_message = await __generate_response(chat_id, message, message_repository, rag_service, user)
+    system_user = await user_repository.get_system_user()
+    response_message = await __generate_response(chat_id, message, message_repository, rag_service, user, system_user)
     return MessageResponse(response=response_message.content, created_at=response_message.created_at)
 
 
@@ -46,14 +50,22 @@ async def update_last_user_message(chat_id: uuid.UUID,
                                     message: MessageRequest,
                                     rag_service: RAGService = Depends(get_rag_service),
                                     message_repository: MessageRepository = Depends(get_message_repository),
+                                    user_repository: UserRepository = Depends(get_user_repository),
                                     user: User = Depends(get_current_user)):
     await message_repository.handle_last_user_message_for_update(chat_id, user.id)
-    response_message = await __generate_response(chat_id, message, message_repository, rag_service, user)
+    system_user = await user_repository.get_system_user()
+    response_message = await __generate_response(chat_id, message, message_repository, rag_service, user, system_user)
     return MessageResponse(response=response_message.content, created_at=response_message.created_at)
 
 
 
-async def __generate_response(chat_id, message, message_repository, rag_service, user) -> Message:
+async def __generate_response(chat_id: uuid.UUID,
+                              message: MessageRequest,
+                              message_repository: MessageRepository,
+                              rag_service: RAGService,
+                              user: User,
+                              system_user: User
+                              ) -> Message:
     context = await rag_service.query_knowledge_base(message.content)
     logger.info(f"Context: {context}")
     response_content = await rag_service.generate_response(message.content, context)

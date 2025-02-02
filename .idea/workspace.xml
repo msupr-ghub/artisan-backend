@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="read me typo fix , add .idea to git ignore">
+    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="test fixes , create system user and test user for tests to ensure test consistency">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/chat/chat.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/chat/chat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories/user_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/user_repository.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/tests/api_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tests/api_tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/startup.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/startup.py" afterDir="false" />
     </list>
     <list id="0b80b6ae-0b1a-4842-ad3c-824a89458d0d" name="env" comment="env">
       <change beforePath="$PROJECT_DIR$/app/.env" beforeDir="false" afterPath="$PROJECT_DIR$/app/.env" afterDir="false" />
@@ -62,7 +62,29 @@
       <recent name="$PROJECT_DIR$/app/api/user" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for api_tests.test_update_last_user_message">
+  <component name="RunManager" selected="Python tests.Python tests for api_tests.test_user_login">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (backend) (2)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -84,25 +106,15 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for api_tests.test_update_last_user_message" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="backend" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;api_tests.test_update_last_user_message&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Python tests for api_tests.test_user_login" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
+      <envs>
+        <env name="ENV" value="test" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/bin/python" />
+      <option name="SDK_NAME" value="Python 3.12 (backend) (2)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -112,18 +124,22 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for api_tests.test_user_registration" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration default="true" type="tests" factoryName="Autodetect">
       <module name="backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <envs>
+        <env name="ENV" value="test" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/bin/python" />
+      <option name="SDK_NAME" value="Python 3.12 (backend) (2)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;api_tests.test_user_registration&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="tests" factoryName="py.test">
@@ -148,15 +164,11 @@
     </configuration>
     <list>
       <item itemvalue="Python.main" />
-      <item itemvalue="Python tests.Python tests for api_tests.test_update_last_user_message" />
       <item itemvalue="Python tests.Python tests for api_tests.test_user_login" />
-      <item itemvalue="Python tests.Python tests for api_tests.test_user_registration" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for api_tests.test_update_last_user_message" />
         <item itemvalue="Python tests.Python tests for api_tests.test_user_login" />
-        <item itemvalue="Python tests.Python tests for api_tests.test_user_registration" />
       </list>
     </recent_temporary>
   </component>
@@ -290,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738505162992</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="test fixes , create system user and test user for tests to ensure test consistency">
+      <option name="closed" value="true" />
+      <created>1738506881992</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1738506881992</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -321,7 +341,8 @@
     <MESSAGE value="Add a default exception handler for any API related exception so at-least the response type is always application/json instead of text&#10;&#10;add additional details to read me" />
     <MESSAGE value="Make response complaint with standard FastAPI error response, also hide sensitive information like actual queries from the error" />
     <MESSAGE value="read me typo fix , add .idea to git ignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="read me typo fix , add .idea to git ignore" />
+    <MESSAGE value="test fixes , create system user and test user for tests to ensure test consistency" />
+    <option name="LAST_COMMIT_MESSAGE" value="test fixes , create system user and test user for tests to ensure test consistency" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
