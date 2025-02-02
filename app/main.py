@@ -7,7 +7,7 @@ from starlette.responses import JSONResponse
 
 from app.api.auth.auth import router as auth_router
 from app.router import api_router
-from startup import process_knowledge_base
+from app.startup import process_knowledge_base
 
 logger = logging.getLogger(__name__)
 
