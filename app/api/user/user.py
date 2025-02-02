@@ -10,6 +10,6 @@ from app.schemas.user import UserCreate, UserResponse
 router = APIRouter()
 
 @router.post("/register", response_model=UserResponse)
-def register_user(user: UserCreate, user_repository: UserRepository = Depends(get_user_repository)):
-    user = user_repository.create(user.to_user())
+async def register_user(user: UserCreate, user_repository: UserRepository = Depends(get_user_repository)):
+    user = await user_repository.create(user.to_user())
     return UserResponse.from_user(user)

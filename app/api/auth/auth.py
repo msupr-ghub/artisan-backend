@@ -19,7 +19,7 @@ router = APIRouter()
 @router.post("/token", response_model=Token)
 async def login(form_data: OAuth2PasswordRequestForm = Depends(),
                 user_repository=Depends(get_user_repository)):
-    user = user_repository.get_by_username(form_data.username)
+    user = await user_repository.get_by_username(form_data.username)
     if not user:
         raise HTTPException(status_code=400, detail="Incorrect username or password")
     if not verify_password(form_data.password, user.hashed_password):

@@ -5,7 +5,7 @@ from app.dependencies import get_rag_service
 
 async def process_knowledge_base() -> None:
     rag_service = get_rag_service()
-    kb_dir = Path(__file__).parent / "app/knowledgebase"
+    kb_dir = Path(__file__).parent / "knowledgebase"
 
     files = []
     for file_path in kb_dir.rglob("*"):

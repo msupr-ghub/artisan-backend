@@ -1,3 +1,4 @@
+import asyncio
 import uuid
 
 from sqlmodel import SQLModel
@@ -6,12 +7,12 @@ from starlette.testclient import TestClient
 from app.db.config import engine
 from app.dependencies import get_user_repository
 from app.main import app
-from app.models.user import User
+from app.models.user import User, UserType
 
 client = TestClient(app)
 
 
-def setup_module():
+async def setup_module():
 
     # drop any existing db
     SQLModel.metadata.drop_all(engine)
@@ -28,7 +29,8 @@ def setup_module():
     user.hashed_password = "$2a$12$IX2KjWj1v38GVCF8TFBRSe0CZy0o2/5Fkol41.2i.FaSuTk3UcuJG"
     user.is_active = True
     user.is_superuser = False
-    user_repository.create(user)
+    user.user_type = UserType.SYSTEM
+    await user_repository.create(user)
 
     # create a user for test authentication
     user = User()
@@ -37,8 +39,9 @@ def setup_module():
     user.hashed_password = "$2a$12$y6VrUyyFcjjOK2c5ef63V.dbZc9xRjr7VROC8owxyGbrH.1UDYVOm"
     user.is_active = True
     user.is_superuser = False
-    user_repository.create(user)
+    await user_repository.create(user)
 
+asyncio.run(setup_module())
 
 
 def test_health_check():
@@ -51,7 +54,7 @@ def test_user_registration():
     response = client.post("/api/users/register",
                            json={"username": "test_user_1", "password": "test_password", "email": "test_1@test.com"})
     assert response.status_code == 200
-    assert response.json()['username'] == "test_user"
+    assert response.json()['username'] == "test_user_1"
 
 
 def test_user_login():
