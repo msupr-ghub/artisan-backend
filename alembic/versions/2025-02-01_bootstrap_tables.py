@@ -27,6 +27,8 @@ def upgrade() -> None:
         sa.Column("hashed_password", sa.String, nullable=False),
         sa.Column("is_active", sa.Boolean, nullable=False),
         sa.Column("is_superuser", sa.Boolean, nullable=False),
+        sa.Column("created_at", sa.TIMESTAMP(timezone=False), server_default=sa.text("now()"), default=sa.func.now(), nullable=False),
+        sa.Column("updated_at", sa.TIMESTAMP(timezone=False), server_default=sa.text("now()"), default=sa.func.now(), onupdate=sa.func.now(), nullable=False),
     )
 
     op.create_index("ix_user_username", "user", ["username"], unique=True)
@@ -35,6 +37,8 @@ def upgrade() -> None:
         "chat",
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True, index=True, nullable=False),
         sa.Column("user_id", postgresql.UUID(as_uuid=True), nullable=False),
+        sa.Column("created_at", sa.TIMESTAMP(timezone=False), server_default=sa.text("now()"), default=sa.func.now(), nullable=False),
+        sa.Column("updated_at", sa.TIMESTAMP(timezone=False), server_default=sa.text("now()"), default=sa.func.now(), onupdate=sa.func.now(), nullable=False),
     )
     op.create_foreign_key("fk_chat_user_id", "chat", "user", ["user_id"], ["id"])
 
@@ -44,6 +48,9 @@ def upgrade() -> None:
         sa.Column("chat_id", postgresql.UUID(as_uuid=True), nullable=False),
         sa.Column("user_id", postgresql.UUID(as_uuid=True), nullable=False),
         sa.Column("content", sa.String, nullable=True),
+        sa.Column("created_at", sa.TIMESTAMP(timezone=False), server_default=sa.text("now()"), default=sa.func.now(), nullable=False),
+        sa.Column("updated_at", sa.TIMESTAMP(timezone=False), server_default=sa.text("now()"), default=sa.func.now(), onupdate=sa.func.now(), nullable=False),
+        sa.Column("type", sa.String, nullable=False)
     )
 
     op.create_index("ix_message_chat_id", "message", ["chat_id"])

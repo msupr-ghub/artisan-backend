@@ -1,20 +1,26 @@
 from uuid import UUID
 
+from bcrypt import hashpw, gensalt
+from passlib.handlers.bcrypt import bcrypt
 from pydantic import BaseModel
 
 from app.models.user import User
 
+
 class UserCreate(BaseModel):
-    name: str
+    username: str
     email: str
     password: str
 
     def to_user(self) -> User:
         user = User()
-        user.username = self.name
+        user.username = self.username
         user.email = self.email
-        user.hashed_password = self.password
+        user.hashed_password = hashpw(self.password.encode('utf-8'), gensalt()).decode('utf-8')
+        user.is_active = True
+        user.is_superuser = False
         return user
+
 
 class UserResponse(BaseModel):
     id: UUID

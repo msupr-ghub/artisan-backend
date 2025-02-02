@@ -2,7 +2,7 @@ from typing import List
 
 from sqlmodel import Session
 
-from app.models.chat import Message
+from app.models.chat import Message, MessageType
 
 
 class MessageRepository:
@@ -27,3 +27,22 @@ class MessageRepository:
         message.text = text
         self.session.commit()
         return message
+
+    async def delete_last_user_message(self, chat_id: int, user_id: int) -> None:
+        message = self.session.query(Message).filter(Message.chat_id == chat_id, Message.user_id == user_id).order_by(Message.created_at.desc()).first()
+        self.session.delete(message)
+        self.session.commit()
+
+    async def delete_last_system_message(self, chat_id: int) -> None:
+        message = self.session.query(Message).filter(Message.chat_id == chat_id, Message.type == MessageType.SYSTEM).order_by(Message.created_at.desc()).first()
+        self.session.delete(message)
+        self.session.commit()
+
+    async def handle_last_user_message_for_update(self, chat_id: int, user_id: int) -> bool:
+        # delete last system and user message, then a new message with new system response will be created
+        try:
+            await self.delete_last_system_message(chat_id)
+            await self.delete_last_user_message(chat_id, user_id)
+            return True
+        except Exception as e:
+            return False

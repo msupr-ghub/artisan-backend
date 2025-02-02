@@ -3,8 +3,10 @@ from typing import Optional
 
 from sqlmodel import SQLModel, Field
 
+from app.models.mixins import TimestampsMixin
 
-class User(SQLModel, table=True):
+
+class User(SQLModel, TimestampsMixin, table=True):
     id: Optional[uuid.UUID] = Field(
         default_factory=uuid.uuid4,
         primary_key=True,
