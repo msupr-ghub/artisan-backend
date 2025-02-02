@@ -1,4 +1,5 @@
 # Create FastAPI instance
+import logging
 
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
@@ -7,6 +8,8 @@ from starlette.responses import JSONResponse
 from app.api.auth.auth import router as auth_router
 from app.router import api_router
 from startup import process_knowledge_base
+
+logger = logging.getLogger(__name__)
 
 app = FastAPI(
     title="Artisan chat bot",
@@ -29,7 +32,12 @@ app.include_router(auth_router, tags=["Auth"])
 
 @app.exception_handler(Exception)
 async def http_exception_handler(request, exc):
-    return JSONResponse(str(exc.detail), status_code=exc.status_code if hasattr(exc, 'status_code') else 500)
+    message = str(exc)
+    logger.error(f"request: {request.url}, body {request.body}, exception: {message}")
+    error_response = {
+        "detail": ["Server error"],  # this will make it compliant with standard FastAPI error definition
+    }
+    return JSONResponse(error_response, status_code=exc.status_code if hasattr(exc, 'status_code') else 500)
 
 
 @app.on_event("startup")
