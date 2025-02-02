@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="Override alembic configuration, we can read DB URL from env file, add email validation for usercreate schema while registering a user &#10;&#10;Add a system user in the migration, used to keep track of system response messages&#10;&#10;update read me with instructions">
-      <change afterPath="$PROJECT_DIR$/app/knowledgebase/artisan_campaign.htm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/startup.py" afterDir="false" />
+    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="simplify tests, we don't need session override as we have added .env file support for tests so tests can use their own configuration and connect with SQLite">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/chat/chat.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/chat/chat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/rag_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/rag_service.py" afterDir="false" />
     </list>
     <list id="0b80b6ae-0b1a-4842-ad3c-824a89458d0d" name="env" comment="env">
       <change beforePath="$PROJECT_DIR$/app/.env" beforeDir="false" afterPath="$PROJECT_DIR$/app/.env" afterDir="false" />
@@ -64,7 +59,7 @@
       <recent name="$PROJECT_DIR$/app/api/user" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python tests.Python tests for api_tests.test_update_last_user_message">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -100,6 +95,20 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for api_tests.test_user_registration" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;api_tests.test_user_registration&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="tests" factoryName="py.test">
       <module name="backend" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -123,10 +132,12 @@
     <list>
       <item itemvalue="Python.main" />
       <item itemvalue="Python tests.Python tests for api_tests.test_update_last_user_message" />
+      <item itemvalue="Python tests.Python tests for api_tests.test_user_registration" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Python tests for api_tests.test_update_last_user_message" />
+        <item itemvalue="Python tests.Python tests for api_tests.test_user_registration" />
       </list>
     </recent_temporary>
   </component>
@@ -212,7 +223,23 @@
       <option name="project" value="LOCAL" />
       <updated>1738488410524</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="actual Knowledge base integration with sample file from artisan help center">
+      <option name="closed" value="true" />
+      <created>1738492149177</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1738492149177</updated>
+    </task>
+    <task id="LOCAL-00011" summary="simplify tests, we don't need session override as we have added .env file support for tests so tests can use their own configuration and connect with SQLite">
+      <option name="closed" value="true" />
+      <created>1738492699049</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1738492699049</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -237,7 +264,9 @@
     <MESSAGE value="env" />
     <MESSAGE value="Add create timestamp in message response, clean up a little, use non test environment as default" />
     <MESSAGE value="Override alembic configuration, we can read DB URL from env file, add email validation for usercreate schema while registering a user &#10;&#10;Add a system user in the migration, used to keep track of system response messages&#10;&#10;update read me with instructions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Override alembic configuration, we can read DB URL from env file, add email validation for usercreate schema while registering a user &#10;&#10;Add a system user in the migration, used to keep track of system response messages&#10;&#10;update read me with instructions" />
+    <MESSAGE value="actual Knowledge base integration with sample file from artisan help center" />
+    <MESSAGE value="simplify tests, we don't need session override as we have added .env file support for tests so tests can use their own configuration and connect with SQLite" />
+    <option name="LAST_COMMIT_MESSAGE" value="simplify tests, we don't need session override as we have added .env file support for tests so tests can use their own configuration and connect with SQLite" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
