@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="Add a default exception handler for any API related exception so at-least the response type is always application/json instead of text&#10;&#10;add additional details to read me">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="f0d64be8-f01c-4691-b249-b1228b9a3fb2" name="Changes" comment="Make response complaint with standard FastAPI error response, also hide sensitive information like actual queries from the error" />
     <list id="0b80b6ae-0b1a-4842-ad3c-824a89458d0d" name="env" comment="env">
       <change beforePath="$PROJECT_DIR$/app/.env" beforeDir="false" afterPath="$PROJECT_DIR$/app/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/app/.env.test" afterDir="false" />
@@ -256,7 +253,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738503329858</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Make response complaint with standard FastAPI error response, also hide sensitive information like actual queries from the error">
+      <option name="closed" value="true" />
+      <created>1738503928939</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1738503928939</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -285,7 +290,8 @@
     <MESSAGE value="simplify tests, we don't need session override as we have added .env file support for tests so tests can use their own configuration and connect with SQLite" />
     <MESSAGE value="Add more knowledgebase data from artisan help center" />
     <MESSAGE value="Add a default exception handler for any API related exception so at-least the response type is always application/json instead of text&#10;&#10;add additional details to read me" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add a default exception handler for any API related exception so at-least the response type is always application/json instead of text&#10;&#10;add additional details to read me" />
+    <MESSAGE value="Make response complaint with standard FastAPI error response, also hide sensitive information like actual queries from the error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Make response complaint with standard FastAPI error response, also hide sensitive information like actual queries from the error" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -302,7 +308,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/main.py</url>
-          <line>36</line>
+          <line>39</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
