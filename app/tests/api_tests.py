@@ -1,4 +1,3 @@
-from sqlalchemy import create_engine
 from sqlmodel import SQLModel, Session
 from starlette.testclient import TestClient
 
@@ -7,8 +6,9 @@ from app.main import app
 
 
 client = TestClient(app)
-# start SQL lite db before tests
-def setup_module(module):
+
+def setup_module():
+    # setup DB tables before running tests
     SQLModel.metadata.create_all(engine)
 
 def test_health_check():

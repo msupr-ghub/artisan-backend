@@ -28,8 +28,8 @@ async def new_message(
                       rag_service: RAGService = Depends(get_rag_service),
                       message_repository: MessageRepository = Depends(get_message_repository),
                       user: User = Depends(get_current_user)):
-    response_content = await __generate_response(chat_id, message, message_repository, rag_service, user)
-    return MessageResponse(response=response_content)
+    response_message = await __generate_response(chat_id, message, message_repository, rag_service, user)
+    return MessageResponse(response=response_message.content, created_at=response_message.created_at)
 
 
 @router.post("/{chat_id}/messages/delete_last_user_message")
@@ -47,16 +47,16 @@ async def update_last_user_message(chat_id: uuid.UUID,
                                     message_repository: MessageRepository = Depends(get_message_repository),
                                     user: User = Depends(get_current_user)):
     await message_repository.handle_last_user_message_for_update(chat_id, user.id)
-    response_content = await __generate_response(chat_id, message, message_repository, rag_service, user)
-    return MessageResponse(response=response_content)
+    response_message = await __generate_response(chat_id, message, message_repository, rag_service, user)
+    return MessageResponse(response=response_message.content, created_at=response_message.created_at)
 
 
 
-async def __generate_response(chat_id, message, message_repository, rag_service, user):
+async def __generate_response(chat_id, message, message_repository, rag_service, user) -> Message:
     context = await rag_service.query_knowledge_base(message.content)
     response_content = await rag_service.generate_response(message.content, context)
     user_message = Message(chat_id=chat_id, user_id=user.id, content=message.content, type=MessageType.USER)
     system_message = Message(chat_id=chat_id, user_id=uuid.UUID("123e4567-e89b-12d3-a456-426614174001"), content=response_content, type=MessageType.SYSTEM)
     await message_repository.create_message(user_message)
     await message_repository.create_message(system_message)
-    return response_content
+    return system_message

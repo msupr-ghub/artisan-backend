@@ -2,7 +2,7 @@ import os
 
 from dotenv import load_dotenv, find_dotenv
 
-env = os.getenv('ENV', 'test')
+env = os.getenv('ENV', 'dev')
 if env == 'test':
     env_file_name = find_dotenv('.env.test')
 else:

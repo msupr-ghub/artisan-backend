@@ -1,4 +1,5 @@
 from typing import List
+from uuid import UUID
 
 from sqlmodel import Session
 
@@ -28,17 +29,17 @@ class MessageRepository:
         self.session.commit()
         return message
 
-    async def delete_last_user_message(self, chat_id: int, user_id: int) -> None:
+    async def delete_last_user_message(self, chat_id: UUID, user_id: UUID) -> None:
         message = self.session.query(Message).filter(Message.chat_id == chat_id, Message.user_id == user_id).order_by(Message.created_at.desc()).first()
         self.session.delete(message)
         self.session.commit()
 
-    async def delete_last_system_message(self, chat_id: int) -> None:
+    async def delete_last_system_message(self, chat_id: UUID) -> None:
         message = self.session.query(Message).filter(Message.chat_id == chat_id, Message.type == MessageType.SYSTEM).order_by(Message.created_at.desc()).first()
         self.session.delete(message)
         self.session.commit()
 
-    async def handle_last_user_message_for_update(self, chat_id: int, user_id: int) -> bool:
+    async def handle_last_user_message_for_update(self, chat_id: UUID, user_id: UUID) -> bool:
         # delete last system and user message, then a new message with new system response will be created
         try:
             await self.delete_last_system_message(chat_id)

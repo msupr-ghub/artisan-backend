@@ -1,6 +1,6 @@
 from contextlib import contextmanager
 
-from sqlmodel import SQLModel, Session, create_engine
+from sqlmodel import  Session, create_engine
 
 from app.config_vars import DATABASE_URL
 
